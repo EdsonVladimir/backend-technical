@@ -1,6 +1,8 @@
 package com.esosa.backend.modules.user.entities;
-import java.io.Serializable;
+
 import lombok.Data;
+
+import java.io.Serializable;
 @Data
 public class User implements Serializable{
     private static final long serialVersionUID = 1L;
