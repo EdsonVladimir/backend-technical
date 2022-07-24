@@ -42,7 +42,7 @@ public class CurseOperationController {
         messages.put("message","Has been created successfully");
         return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.CREATED);
 
-    }
+    };
     @PutMapping
     ResponseEntity<?> updateCourse(@Valid @RequestBody Course data, BindingResult resultado){
 
@@ -62,8 +62,7 @@ public class CurseOperationController {
         }
         messages.put("message","Has been modified successfully");
         return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.CREATED);
-
-    }
+    };
     @DeleteMapping(value = "/{id}")
     ResponseEntity<?> deleteCourse(@PathVariable Long id) {
         Map<String, Object> messages = new HashMap<>();
@@ -76,5 +75,5 @@ public class CurseOperationController {
         }
         messages.put("message", "Has been deleted successfully");
         return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.OK);
-    }
+    };
 }
