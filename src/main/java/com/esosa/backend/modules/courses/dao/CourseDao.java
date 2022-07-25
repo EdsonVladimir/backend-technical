@@ -11,4 +11,6 @@ import java.util.List;
 public interface CourseDao {
     @Select("select * from operations.courses where status = 1 ORDER BY 1,2")
     List<Course> coursesList();
+    @Select("select * from operations.courses where status = 1 and id_course=#{id} ORDER BY 1,2")
+    List<Course> course(Long id);
 }

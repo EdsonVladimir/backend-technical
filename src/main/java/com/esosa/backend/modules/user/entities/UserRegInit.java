@@ -7,6 +7,5 @@ public class UserRegInit {
     private String full_name;
     private String email;
     private int id_country;
-    private String date_reg;
     private String pass;
 }

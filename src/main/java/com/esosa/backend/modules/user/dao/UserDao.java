@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserDao {
     @Select("SELECT id_user, full_name FROM core.user")
     List<User> usersList();
-    @Insert("inser into core.user(full_name,email,id_country,date_reg,pass) values (full_name=#{full_name},email=#{email},id_country=#{id_country},date_reg=#{date_reg},pass=#{pass})")
+    @Insert("insert into core.user(full_name,email,id_country,pass) values (#{full_name},#{email},#{id_country},#{pass})")
     void createUserInit(UserRegInit data);
     @Update("update core.user set full_name=#{full_name},email=#{email},id_country=#{id_country},date_reg=#{date_reg},pass=#{pass} where id_user=#{id}")
     void updateUser(User data);
