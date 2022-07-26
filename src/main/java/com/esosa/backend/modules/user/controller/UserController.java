@@ -44,8 +44,7 @@ public class UserController {
         }
         try{
             iUserDao.createUserInit(data);
-        } catch (
-                DataAccessException e){
+        } catch (DataAccessException e){
             messages.put("message", "Error when performing the query in the Database");
             messages.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
             return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.INTERNAL_SERVER_ERROR);

@@ -18,7 +18,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                .httpBasic(withDefaults())
        .authorizeRequests()
                .antMatchers("/public/**").permitAll()
-               .antMatchers("/api/**").hasAnyRole("ADMIN")
+               .antMatchers("/api/**").hasAnyRole("USER")
+                .antMatchers("/admin/**").hasAnyRole("ADMIN")
                .anyRequest().authenticated();
 
    }

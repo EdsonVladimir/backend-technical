@@ -20,7 +20,6 @@ import java.util.Map;
 public class CourseController {
     @Autowired
     CourseDao iCourseDao;
-
     @GetMapping(value="/courses")
     ResponseEntity<?> coursesList() {
         List<Course> data = null;
