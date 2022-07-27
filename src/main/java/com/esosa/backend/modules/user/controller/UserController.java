@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
@@ -21,6 +22,9 @@ import java.util.stream.Collectors;
 public class UserController {
    @Autowired
    UserDao iUserDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
    @GetMapping("/user")
     ResponseEntity<?> usersList(){
        List<User> data = null;
@@ -43,6 +47,7 @@ public class UserController {
             return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.BAD_REQUEST);
         }
         try{
+            data.setPass(passwordEncoder.encode(data.getPass()));
             iUserDao.createUserInit(data);
         } catch (DataAccessException e){
             messages.put("message", "Error when performing the query in the Database");

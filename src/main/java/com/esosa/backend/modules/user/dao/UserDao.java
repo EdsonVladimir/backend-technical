@@ -1,6 +1,7 @@
 package com.esosa.backend.modules.user.dao;
 
 import com.esosa.backend.modules.user.entities.User;
+import com.esosa.backend.modules.user.entities.UserLogin;
 import com.esosa.backend.modules.user.entities.UserRegInit;
 import org.apache.ibatis.annotations.*;
 
@@ -16,4 +17,7 @@ public interface UserDao {
     void updateUser(User data);
     @Delete("update core.user set status=0 where id_user=#{id}")
     void deleteUser(Long id);
+
+    @Select("select email,pass from core.user where status=1 AND email=#{email}")
+    UserLogin user(String email);
 }
