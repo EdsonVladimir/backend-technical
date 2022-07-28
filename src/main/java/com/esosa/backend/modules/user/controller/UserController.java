@@ -40,6 +40,7 @@ public class UserController {
    };
     @PostMapping("/user")
     ResponseEntity<?> createUserInit(@Valid @RequestBody UserRegInit data, BindingResult resultado){
+       //System.out.println(data);
         Map<String, Object> messages = new HashMap<>();
         if (resultado.hasErrors()) {
             List<String> error = resultado.getFieldErrors().stream().map(err -> "El campo '"+err.getField()+"' "+err.getDefaultMessage()).collect(Collectors.toList());

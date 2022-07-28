@@ -6,29 +6,29 @@ public class AuthenticationReq implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private String user;
+    private String email;
 
     private String pass;
 
-    public AuthenticationReq(String user, String pass) {
-        this.user = user;
+    public AuthenticationReq(String email, String pass) {
+        this.email = email;
         this.pass = pass;
     }
 
-    public String getUser() {
-        return user;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPass() {
         return pass;
     }
 
-    public void setPass(String clave) {
-        this.pass = clave;
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 }
 

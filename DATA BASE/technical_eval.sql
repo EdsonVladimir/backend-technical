@@ -469,8 +469,15 @@ COPY core.rol (id_rol, name, description, status) FROM stdin;
 --
 
 COPY core."user" (id_user, full_name, email, pass, id_country, status, date_reg, date_modified, date_birth, gender, address, phone_number, id_language, id_education) FROM stdin;
-1	Edson	edson.sosa@gmail.com	\N	\N	1	2022-07-21 06:58:23.698062	2022-07-21 06:58:23.698062	\N	\N	\N	\N	\N	\N
 2	Sara Gallardo	sara@gmail.com	12345	1	1	2022-07-24 23:28:01.624895	2022-07-24 23:28:01.624895	\N	\N	\N	\N	\N	\N
+3	Grover Sosa	\N	12345	1	1	2022-07-25 19:21:17.439721	2022-07-25 19:21:17.439721	\N	\N	\N	\N	\N	\N
+6	dsfdsf	strisdfdsng	dsffs	4	1	2022-07-25 23:10:01.179648	2022-07-25 23:10:01.179648	\N	\N	\N	\N	\N	\N
+1	Edson	edson.sosa@gmail.com	$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq	\N	1	2022-07-21 06:58:23.698062	2022-07-21 06:58:23.698062	\N	\N	\N	\N	\N	\N
+14	Juan perez	juan@gmail.com	12345	2	1	2022-07-26 23:38:52.659656	2022-07-26 23:38:52.659656	\N	\N	\N	\N	\N	\N
+15	Junito mamani	juanito@gmail.com	$2a$10$aVJjESN3hk7vrGz8FYJcGepANAUrzFPD.fjYxvVcRuptkzB9AtIJO	2	1	2022-07-26 23:48:56.89465	2022-07-26 23:48:56.89465	\N	\N	\N	\N	\N	\N
+20	Nora Gallardo	edson.vladimir@gmail.com	$2a$10$BGifxAXZjL4zLJo9IzLLtORknwHduXI3FuiPcuzKvTeVJ1EEPHRPu	1	1	2022-07-27 22:38:52.707015	2022-07-27 22:38:52.707015	\N	\N	\N	\N	\N	\N
+27	Nora Gallardo	nora@gmail.com	$2a$10$jQBrxW.1qTn93rgZZ9Mq3evkWmYpLGv/8hH34T9quSEaAuGEMYTWa	3	1	2022-07-27 23:20:35.732333	2022-07-27 23:20:35.732333	\N	\N	\N	\N	\N	\N
+28	Freddy Sosa Gallardo	freddy@gmail.com	$2a$10$8dGJAMC3VldvdrtUq/nsEukrGsB0U9bAdoQ5zhfpz7OobotSCisHm	2	1	2022-07-27 23:23:10.366164	2022-07-27 23:23:10.366164	\N	\N	\N	\N	\N	\N
 \.
 
 
@@ -493,6 +500,7 @@ COPY operations.courses (id_course, name, description, img, id_user_teacher, dur
 2	Java Advanced	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.		0	2:00hr	200	2022-07-22	2022-08-22	9876543	1
 1	Spring Boot	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.		0	3:00hr	300	2022-07-22	2022-07-22	67128003	1
 5	string	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum, versions of Lorem Ipsum.	string	0	string	0	2022-08-21	2022-09-29	67128003	0
+7	Laravel	Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.	string	0	3:30Hrs	0	2022-06-30	2022-08-24	67128003	1
 \.
 
 
@@ -505,6 +513,8 @@ COPY operations.enrolled_courses (id_enrolled_courses, id_course, status, id_use
 3	2	1	1	2022-07-24 23:16:45.343125	2
 4	2	1	2	2022-07-24 23:29:08.638455	3
 5	1	1	2	2022-07-24 23:29:25.440623	3
+6	3	1	3	2022-07-25 19:25:09.890374	4
+7	2	1	3	2022-07-25 19:25:50.160766	2
 \.
 
 
@@ -567,7 +577,7 @@ SELECT pg_catalog.setval('core.rol_id_rol_seq', 3, true);
 -- Name: user_id_user_seq; Type: SEQUENCE SET; Schema: core; Owner: postgres
 --
 
-SELECT pg_catalog.setval('core.user_id_user_seq', 2, true);
+SELECT pg_catalog.setval('core.user_id_user_seq', 28, true);
 
 
 --
@@ -581,14 +591,14 @@ SELECT pg_catalog.setval('core.user_rol_id_user_rol_seq', 1, false);
 -- Name: courses_id_course_seq; Type: SEQUENCE SET; Schema: operations; Owner: postgres
 --
 
-SELECT pg_catalog.setval('operations.courses_id_course_seq', 6, true);
+SELECT pg_catalog.setval('operations.courses_id_course_seq', 7, true);
 
 
 --
 -- Name: enrolled_courses_id_enrolled_courses_seq; Type: SEQUENCE SET; Schema: operations; Owner: postgres
 --
 
-SELECT pg_catalog.setval('operations.enrolled_courses_id_enrolled_courses_seq', 5, true);
+SELECT pg_catalog.setval('operations.enrolled_courses_id_enrolled_courses_seq', 7, true);
 
 
 --

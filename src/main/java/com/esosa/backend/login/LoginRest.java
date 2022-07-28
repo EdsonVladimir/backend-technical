@@ -30,12 +30,13 @@ public class LoginRest {
 
     @PostMapping("/authenticate")
     public ResponseEntity<TokenInfo> authenticate(@RequestBody AuthenticationReq authenticationReq) {
-        logger.info("Autenticando al usuario {}", authenticationReq.getUser());
+       // System.out.println(authenticationReq.getEmail());
+        logger.info("Authenticating the user {}", authenticationReq.getEmail());
         authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(authenticationReq.getUser(),
+                new UsernamePasswordAuthenticationToken(authenticationReq.getEmail(),
                         authenticationReq.getPass()));
         final UserDetails userDetails = usuarioDetailsService.loadUserByUsername(
-                authenticationReq.getUser());
+                authenticationReq.getEmail());
 
         final String jwt = jwtUtilService.generateToken(userDetails);
 
