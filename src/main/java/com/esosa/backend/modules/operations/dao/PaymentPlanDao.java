@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.*;
 import java.util.List;
 @Mapper
 public interface PaymentPlanDao {
-    @Select("SELECT id_payment_plan, number_installments,interest, discount FROM operations.payment_plan")
+    @Select("SELECT id_payment_plan, number_installments,interest, discount, name_plan FROM operations.payment_plan")
     List<PaymentPlan> paimentPlanList();
     @Insert("insert into operations.payment_plan(number_installments,interest, discount) values (#{number_installments}, #{interest}, #{discount})")
     void createPaimentPlan(PaymentPlanModify data);

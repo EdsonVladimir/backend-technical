@@ -101,7 +101,8 @@ CREATE TABLE core."user" (
     address text,
     phone_number character varying(50),
     id_language integer,
-    id_education integer
+    id_education integer,
+    date_of_birth date
 );
 
 
@@ -254,7 +255,8 @@ CREATE TABLE operations.payment_plan (
     number_installments integer,
     interest double precision,
     status integer DEFAULT 1,
-    discount double precision
+    discount double precision,
+    name_plan character varying(500)
 );
 
 
@@ -468,16 +470,32 @@ COPY core.rol (id_rol, name, description, status) FROM stdin;
 -- Data for Name: user; Type: TABLE DATA; Schema: core; Owner: postgres
 --
 
-COPY core."user" (id_user, full_name, email, pass, id_country, status, date_reg, date_modified, date_birth, gender, address, phone_number, id_language, id_education) FROM stdin;
-2	Sara Gallardo	sara@gmail.com	12345	1	1	2022-07-24 23:28:01.624895	2022-07-24 23:28:01.624895	\N	\N	\N	\N	\N	\N
-3	Grover Sosa	\N	12345	1	1	2022-07-25 19:21:17.439721	2022-07-25 19:21:17.439721	\N	\N	\N	\N	\N	\N
-6	dsfdsf	strisdfdsng	dsffs	4	1	2022-07-25 23:10:01.179648	2022-07-25 23:10:01.179648	\N	\N	\N	\N	\N	\N
-1	Edson	edson.sosa@gmail.com	$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq	\N	1	2022-07-21 06:58:23.698062	2022-07-21 06:58:23.698062	\N	\N	\N	\N	\N	\N
-14	Juan perez	juan@gmail.com	12345	2	1	2022-07-26 23:38:52.659656	2022-07-26 23:38:52.659656	\N	\N	\N	\N	\N	\N
-15	Junito mamani	juanito@gmail.com	$2a$10$aVJjESN3hk7vrGz8FYJcGepANAUrzFPD.fjYxvVcRuptkzB9AtIJO	2	1	2022-07-26 23:48:56.89465	2022-07-26 23:48:56.89465	\N	\N	\N	\N	\N	\N
-20	Nora Gallardo	edson.vladimir@gmail.com	$2a$10$BGifxAXZjL4zLJo9IzLLtORknwHduXI3FuiPcuzKvTeVJ1EEPHRPu	1	1	2022-07-27 22:38:52.707015	2022-07-27 22:38:52.707015	\N	\N	\N	\N	\N	\N
-27	Nora Gallardo	nora@gmail.com	$2a$10$jQBrxW.1qTn93rgZZ9Mq3evkWmYpLGv/8hH34T9quSEaAuGEMYTWa	3	1	2022-07-27 23:20:35.732333	2022-07-27 23:20:35.732333	\N	\N	\N	\N	\N	\N
-28	Freddy Sosa Gallardo	freddy@gmail.com	$2a$10$8dGJAMC3VldvdrtUq/nsEukrGsB0U9bAdoQ5zhfpz7OobotSCisHm	2	1	2022-07-27 23:23:10.366164	2022-07-27 23:23:10.366164	\N	\N	\N	\N	\N	\N
+COPY core."user" (id_user, full_name, email, pass, id_country, status, date_reg, date_modified, date_birth, gender, address, phone_number, id_language, id_education, date_of_birth) FROM stdin;
+2	Sara Gallardo	sara@gmail.com	12345	1	1	2022-07-24 23:28:01.624895	2022-07-24 23:28:01.624895	\N	\N	\N	\N	\N	\N	\N
+1	Edson	edson.sosa@gmail.com	$2a$10$56VCAiApLO8NQYeOPiu2De/EBC5RWrTZvLl7uoeC3r7iXinRR1iiq	\N	1	2022-07-21 06:58:23.698062	2022-07-21 06:58:23.698062	\N	M	Pampahasi	67128003	1	2	\N
+3	Grover Sosa	\N	12345	1	1	2022-07-25 19:21:17.439721	2022-07-25 19:21:17.439721	\N	\N	\N	\N	\N	\N	\N
+6	dsfdsf	strisdfdsng	dsffs	4	1	2022-07-25 23:10:01.179648	2022-07-25 23:10:01.179648	\N	\N	\N	\N	\N	\N	\N
+14	Juan perez	juan@gmail.com	12345	2	1	2022-07-26 23:38:52.659656	2022-07-26 23:38:52.659656	\N	\N	\N	\N	\N	\N	\N
+15	Junito mamani	juanito@gmail.com	$2a$10$aVJjESN3hk7vrGz8FYJcGepANAUrzFPD.fjYxvVcRuptkzB9AtIJO	2	1	2022-07-26 23:48:56.89465	2022-07-26 23:48:56.89465	\N	\N	\N	\N	\N	\N	\N
+20	Nora Gallardo	edson.vladimir@gmail.com	$2a$10$BGifxAXZjL4zLJo9IzLLtORknwHduXI3FuiPcuzKvTeVJ1EEPHRPu	1	1	2022-07-27 22:38:52.707015	2022-07-27 22:38:52.707015	\N	\N	\N	\N	\N	\N	\N
+28	Freddy Sosa Gallardo	freddy@gmail.com	$2a$10$8dGJAMC3VldvdrtUq/nsEukrGsB0U9bAdoQ5zhfpz7OobotSCisHm	2	1	2022-07-27 23:23:10.366164	2022-07-27 23:23:10.366164	\N	\N	\N	\N	\N	\N	\N
+29	pepito peres	pepi@gmail.com	$2a$10$NMihaGRiG7n9Q1YhV/EbtOmw6X.7uGfctHm418dAx1DA2bFt/C1m.	2	1	2022-07-28 20:57:02.906756	2022-07-28 20:57:02.906756	\N	\N	\N	\N	\N	\N	\N
+33	Yusel Calle	yusel@gmail.com	$2a$10$piMuiV9aw2jeF3B9dXBSou3WE9R3FGxbRQwrcLM2w/gX4xLVqCi6y	5	1	2022-07-28 23:37:10.528118	2022-07-28 23:37:10.528118	\N	\N	\N	\N	\N	\N	\N
+34	sadasdsad	dsadasdasd@gmail.com	$2a$10$fdzdQvt10dVME22xfM3Vy.yvMBim8jfdNKh/Z8EDxB7Lb.FfVg/ji	4	1	2022-07-28 23:38:29.296761	2022-07-28 23:38:29.296761	\N	\N	\N	\N	\N	\N	\N
+35	sadsadsadas	asdasdasdas@gmail.com	$2a$10$o5HVS6jfGeveQIozPMvP7OmO3tPBMTg/AI7RAf5HtUHaDrrzYHDai	2	1	2022-07-28 23:39:05.05495	2022-07-28 23:39:05.05495	\N	\N	\N	\N	\N	\N	\N
+36	dsadasdas	asdas@gmail.com	$2a$10$258wzvx0e2Nqe3x3qvkUkeEHr60CLc5F/zYy1OxLX0O9yn6CFhokm	5	1	2022-07-28 23:41:19.830755	2022-07-28 23:41:19.830755	\N	\N	\N	\N	\N	\N	\N
+37	sadasdas	sadas@gmail.com	$2a$10$zjZist0qQ.HCPRFQLk7S6uD2.W5W1p9c5/8QaFS0erfvOK3K68Ysi	5	1	2022-07-28 23:41:42.328449	2022-07-28 23:41:42.328449	\N	\N	\N	\N	\N	\N	\N
+38	sadsa	asdas@gmail.com	$2a$10$0wBC/jzRFgQVZE3GO23KbueJ6JD4pMaGvz/VdI8dyZ8XL8vTEMEBG	3	1	2022-07-28 23:42:19.856129	2022-07-28 23:42:19.856129	\N	\N	\N	\N	\N	\N	\N
+39	sadasd	sadsa@gmail.com	$2a$10$zi3uhlPXcW8mKNbE/KEIh.fTxiMie5B3DtGjSjEQIeV1Le/k0z8v2	4	1	2022-07-28 23:44:31.728762	2022-07-28 23:44:31.728762	\N	\N	\N	\N	\N	\N	\N
+40	ewqewqewq	dsasdas@gamsada.com	$2a$10$DJG7VY0v6p2v2Skdi67mgegs57sU1JvP6nB77tcD4JXwHg1YTUZYO	4	1	2022-07-29 00:01:51.656615	2022-07-29 00:01:51.656615	\N	\N	\N	\N	\N	\N	\N
+42	ewqewqewq	dsasdas@gamsada.com	$2a$10$1rtWDpbImYHfgos18xZFIeyLVp2k8iUf7pX9aE.n9E3XJM8Ot3Xn.	3	1	2022-07-29 00:02:06.266342	2022-07-29 00:02:06.266342	\N	\N	\N	\N	\N	\N	\N
+44	ewqewqewq	dsasdas@gamsada.com	$2a$10$6QublDV24MuGMDDUdFxHHeF7z864XPybMMxI2mThPzoIoWmHJtoVu	4	1	2022-07-29 00:02:19.367758	2022-07-29 00:02:19.367758	\N	\N	\N	\N	\N	\N	\N
+46	ewqewqewq	dsasdas@gamsada.com	$2a$10$Z5pzpPARp54F5ellaBb1.OctgLNduPH6nHaZg6GsIXAwe/r6fgsf2	5	1	2022-07-29 00:02:51.801389	2022-07-29 00:02:51.801389	\N	\N	\N	\N	\N	\N	\N
+47	ewqewqewq	dsasdas@gamsada.com	$2a$10$01/I/mhS6K682ypOWV.JCOaeanrpNNkzHD3EqDTrdGksT0PWjMY3a	5	1	2022-07-29 00:03:09.444399	2022-07-29 00:03:09.444399	\N	\N	\N	\N	\N	\N	\N
+49	Nortiton	norton@gmail.com	$2a$10$fRpl3MdAVrnD1Zj2t3RSeOb/ysZWVJdt6A6XDqjdQuRbz0w9rmb2i	4	1	2022-07-29 00:08:12.440498	2022-07-29 00:08:12.440498	\N	\N	\N	\N	\N	\N	\N
+50	vladimir sosa	vladi@gmail.com	$2a$10$c0KEk2L6IMnM6cEE49C6oOUi1bWxMlOnX8o.T8bgfm1JVhhdEPIQ6	4	1	2022-07-29 00:08:57.771569	2022-07-29 00:08:57.771569	\N	\N	\N	\N	\N	\N	\N
+51	Pepito Perez	pepito@gmail.com	$2a$10$DDHp2uuvBZJt6i.3rZYsVe8LgyeOvX6y1.WCfvbDQvdJPIpGJYkJq	4	1	2022-07-29 00:31:15.590071	2022-07-29 00:31:15.590071	\N	\N	\N	\N	\N	\N	\N
+27	Nora Gallardo	nora@gmail.com	$2a$10$jQBrxW.1qTn93rgZZ9Mq3evkWmYpLGv/8hH34T9quSEaAuGEMYTWa	3	1	2022-07-27 23:20:35.732333	2022-07-27 23:20:35.732333	2022-07-28	M	sadsadas	32432432	2	3	\N
 \.
 
 
@@ -515,6 +533,11 @@ COPY operations.enrolled_courses (id_enrolled_courses, id_course, status, id_use
 5	1	1	2	2022-07-24 23:29:25.440623	3
 6	3	1	3	2022-07-25 19:25:09.890374	4
 7	2	1	3	2022-07-25 19:25:50.160766	2
+8	2	1	27	2022-07-29 06:29:00.635873	1
+9	2	1	27	2022-07-29 06:29:39.723408	1
+10	2	1	27	2022-07-29 06:31:30.99922	3
+11	2	1	27	2022-07-29 06:33:39.885888	1
+12	1	1	27	2022-07-29 06:33:59.440671	3
 \.
 
 
@@ -522,11 +545,11 @@ COPY operations.enrolled_courses (id_enrolled_courses, id_course, status, id_use
 -- Data for Name: payment_plan; Type: TABLE DATA; Schema: operations; Owner: postgres
 --
 
-COPY operations.payment_plan (id_payment_plan, number_installments, interest, status, discount) FROM stdin;
-1	1	0	1	1500
-4	48	11.99	1	0
-3	24	5.99	1	0
-2	16	0	1	0
+COPY operations.payment_plan (id_payment_plan, number_installments, interest, status, discount, name_plan) FROM stdin;
+1	1	0	1	1500	PIF ( pay in Full)
+3	24	5.99	1	0	installments
+4	48	11.99	1	0	installments
+2	16	0	1	0	installments
 \.
 
 
@@ -577,7 +600,7 @@ SELECT pg_catalog.setval('core.rol_id_rol_seq', 3, true);
 -- Name: user_id_user_seq; Type: SEQUENCE SET; Schema: core; Owner: postgres
 --
 
-SELECT pg_catalog.setval('core.user_id_user_seq', 28, true);
+SELECT pg_catalog.setval('core.user_id_user_seq', 51, true);
 
 
 --
@@ -598,7 +621,7 @@ SELECT pg_catalog.setval('operations.courses_id_course_seq', 7, true);
 -- Name: enrolled_courses_id_enrolled_courses_seq; Type: SEQUENCE SET; Schema: operations; Owner: postgres
 --
 
-SELECT pg_catalog.setval('operations.enrolled_courses_id_enrolled_courses_seq', 7, true);
+SELECT pg_catalog.setval('operations.enrolled_courses_id_enrolled_courses_seq', 12, true);
 
 
 --

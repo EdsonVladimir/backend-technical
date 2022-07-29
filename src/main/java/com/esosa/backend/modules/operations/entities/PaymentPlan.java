@@ -7,4 +7,5 @@ public class PaymentPlan {
     private int number_installments;
     private double interest;
     private double discount;
+    private String name_plan;
 }

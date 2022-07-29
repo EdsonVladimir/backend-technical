@@ -1,8 +1,6 @@
 package com.esosa.backend.modules.user.dao;
 
-import com.esosa.backend.modules.user.entities.User;
-import com.esosa.backend.modules.user.entities.UserLogin;
-import com.esosa.backend.modules.user.entities.UserRegInit;
+import com.esosa.backend.modules.user.entities.*;
 import org.apache.ibatis.annotations.*;
 
 import java.util.List;
@@ -18,6 +16,11 @@ public interface UserDao {
     @Delete("update core.user set status=0 where id_user=#{id}")
     void deleteUser(Long id);
 
-    @Select("select email,pass from core.user where status=1 AND email=#{email}")
+    @Select("select id_user,email,pass from core.user where status=1 AND email=#{email}")
     UserLogin user(String email);
+    @Select("select id_user, full_name,email,id_country from core.user where status=1 AND email=#{email}")
+    UserRes userRes(String email);
+
+    @Update("update core.user set date_birth=#{date_birth},gender=#{gender}, address=#{address}, phone_number=#{phone_number}, id_language=#{id_language}, id_education=#{id_education} where id_user=#{id_user}")
+    void updateUserCourse(UpdateUser data);
 }

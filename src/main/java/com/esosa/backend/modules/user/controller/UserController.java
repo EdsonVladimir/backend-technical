@@ -1,6 +1,7 @@
 package com.esosa.backend.modules.user.controller;
 
 import com.esosa.backend.modules.user.dao.UserDao;
+import com.esosa.backend.modules.user.entities.UpdateUser;
 import com.esosa.backend.modules.user.entities.User;
 import com.esosa.backend.modules.user.entities.UserRegInit;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,6 +69,27 @@ public class UserController {
         }
         try{
             iUserDao.updateUser(data);
+        } catch (
+                DataAccessException e){
+            messages.put("message", "Error when performing the query in the Database");
+            messages.put("error", e.getMessage().concat(":").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        messages.put("message","Has been modified successfully");
+        return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.CREATED);
+    };
+
+    @PutMapping("/user-update")
+    ResponseEntity<?> updateUserReg(@Valid @RequestBody UpdateUser data, BindingResult resultado){
+        System.out.println(data);
+        Map<String, Object> messages = new HashMap<>();
+        if (resultado.hasErrors()) {
+            List<String> error = resultado.getFieldErrors().stream().map(err -> "El campo '"+err.getField()+"' "+err.getDefaultMessage()).collect(Collectors.toList());
+            messages.put("error", error);
+            return new ResponseEntity<Map<String, Object>>(messages, HttpStatus.BAD_REQUEST);
+        }
+        try{
+            iUserDao.updateUserCourse(data);
         } catch (
                 DataAccessException e){
             messages.put("message", "Error when performing the query in the Database");
